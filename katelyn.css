@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #000000 100%);
+    min-height: 100vh;
+    color: #ffffff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.page-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #666;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.page-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #ffffff;
+    transform: rotate(180deg) scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.glitch-container {
+    position: relative;
+    text-align: center;
+    margin: 100px 0 80px;
+}
+
+.glitch {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    text-transform: lowercase;
+    position: relative;
+    color: #ffffff;
+    letter-spacing: 3px;
+    animation: glitch 2s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: #ff0040;
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: #00ffff;
+    z-index: -2;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(2px, -2px); }
+    40% { transform: translate(-2px, 2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(2px, 2px); }
+}
+
+@keyframes glitch-2 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(-2px, -2px); }
+}
+
+.void-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.thought-bubble {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 600px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #cccccc;
+    font-style: italic;
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    backdrop-filter: blur(5px);
+}
+
+.thought-bubble.delay-1 {
+    animation-delay: 0.5s;
+}
+
+.thought-bubble.delay-2 {
+    animation-delay: 1s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.emotion-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 80px 0;
+    padding: 0 20px;
+}
+
+.emotion-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.emotion-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.emotion-card:hover::before {
+    left: 100%;
+}
+
+.emotion-card.anger {
+    border-color: #ff4444;
+    box-shadow: 0 0 30px rgba(255, 68, 68, 0.1);
+}
+
+.emotion-card.sadness {
+    border-color: #4477ff;
+    box-shadow: 0 0 30px rgba(68, 119, 255, 0.1);
+}
+
+.emotion-card.hatred {
+    border-color: #444444;
+    box-shadow: 0 0 30px rgba(68, 68, 68, 0.2);
+}
+
+.emotion-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    filter: grayscale(100%);
+}
+
+.emotion-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: #ffffff;
+}
+
+.emotion-card p {
+    color: #aaaaaa;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.dark-quotes {
+    margin: 80px 0;
+    text-align: center;
+}
+
+.quote {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 4px solid #333;
+    padding: 20px;
+    margin: 25px auto;
+    max-width: 500px;
+    font-size: 1rem;
+    color: #888888;
+    font-style: italic;
+    position: relative;
+    transform: translateX(-20px);
+    opacity: 0;
+    animation: slideIn 0.8s ease-out forwards;
+}
+
+.quote:nth-child(2) { animation-delay: 0.3s; }
+.quote:nth-child(3) { animation-delay: 0.6s; }
+.quote:nth-child(4) { animation-delay: 0.9s; }
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.static-noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+    z-index: 1;
+    pointer-events: none;
+    animation: static 0.1s infinite;
+}
+
+@keyframes static {
+    0%, 100% { opacity: 0.02; }
+    50% { opacity: 0.05; }
+}
+
+@media (max-width: 768px) {
+    .emotion-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    .thought-bubble, .quote {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .glitch {
+        font-size: 2rem;
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
