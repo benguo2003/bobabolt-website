@@ -194,6 +194,7 @@ header p {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         padding: 0 1rem 2rem;
+        max-width: 600px;
     }
     
     header {
@@ -206,7 +207,7 @@ header p {
     
     .coffee-card {
         margin: 0 auto;
-        max-width: 500px;
+        width: 100%;
     }
 }
 
@@ -218,10 +219,16 @@ header p {
     .coffee-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
-        padding: 0 0.5rem 1.5rem;
+        padding: 0 1rem 1.5rem;
+        max-width: none;
+    }
+    
+    .coffee-card {
+        width: 100%;
+        max-width: none;
     }
     
     .card-content {
-        padding: 1rem;
+        padding: 1.2rem;
     }
 }
