@@ -100,15 +100,62 @@ header p {
 }
 
 .stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.star {
+    position: relative;
     font-size: 1.3rem;
+    color: #e0e0e0;
+    display: inline-block;
+}
+
+.star.filled {
     color: #ffb300;
-    letter-spacing: 2px;
+}
+
+.star.partial {
+    color: #e0e0e0;
+}
+
+.star.partial::before {
+    content: "★";
+    position: absolute;
+    left: 0;
+    color: #ffb300;
+    overflow: hidden;
+    width: var(--fill-percentage, 0%);
 }
 
 .rating-text {
     font-weight: 600;
     color: #3e2723;
     font-size: 1.1rem;
+}
+
+.order-section {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f8f4e6 0%, #f0e6d2 100%);
+    border-radius: 12px;
+    border-left: 4px solid #8d6e63;
+}
+
+.order-section h3 {
+    font-size: 1rem;
+    color: #3e2723;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.order-item {
+    color: #5d4037;
+    font-size: 0.95rem;
+    font-style: italic;
+    margin: 0;
+    font-weight: 500;
 }
 
 .criteria {
