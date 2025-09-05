@@ -1,12 +1,180 @@
-body {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f5f5f5;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-h1 {
-    color: #333;
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, #f5f1eb 0%, #ede4d1 100%);
+    min-height: 100vh;
+    color: #5d4037;
+    line-height: 1.6;
+}
+
+header {
     text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #d7ccc8;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #3e2723;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #8d6e63;
+    font-style: italic;
+}
+
+.coffee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.coffee-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(62, 39, 35, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #efebe9;
+}
+
+.coffee-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(62, 39, 35, 0.15);
+}
+
+.coffee-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.header-info {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #f5f5f5;
+    padding-bottom: 1rem;
+}
+
+.header-info h2 {
+    font-size: 1.4rem;
+    color: #3e2723;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+.location {
+    color: #8d6e63;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem;
+    background: linear-gradient(135deg, #fff8e1 0%, #f3e5ab 100%);
+    border-radius: 12px;
+    border: 1px solid #f0e68c;
+}
+
+.stars {
+    font-size: 1.3rem;
+    color: #ffb300;
+    letter-spacing: 2px;
+}
+
+.rating-text {
+    font-weight: 600;
+    color: #3e2723;
+    font-size: 1.1rem;
+}
+
+.criteria {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.criterion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem;
+    background: #fafafa;
+    border-radius: 8px;
+    border-left: 4px solid #a1887f;
+}
+
+.criterion .label {
+    font-weight: 500;
+    color: #5d4037;
+    font-size: 0.9rem;
+}
+
+.criterion .value {
+    font-weight: 600;
+    color: #3e2723;
+    background: #ffffff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    .coffee-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem 2rem;
+    }
+    
+    header {
+        padding: 2rem 1rem;
+    }
+    
+    header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .coffee-card {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .coffee-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.5rem 1.5rem;
+    }
+    
+    .card-content {
+        padding: 1rem;
+    }
 }
