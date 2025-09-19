@@ -1,2 +1,2 @@
 # bobabolt-website
-website for rachel li, the goat coffe connoisseur
+website for rachel li, the goat coffee connoisseur

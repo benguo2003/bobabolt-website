@@ -8,7 +8,15 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/images/site.webmanifest">
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Preload images -->
+    <link rel="preload" as="image" href="images/coffee/CoolMuang Coffee.jpg">
+    <link rel="preload" as="image" href="images/coffee/Frenzy Coffee.jpg">
+    <link rel="preload" as="image" href="images/coffee/Mandarin Coffee Stand.jpg">
+    <link rel="preload" as="image" href="images/coffee/Mishka's Cafe.jpg">
+    <link rel="preload" as="image" href="images/coffee/Sunright.jpg">
+    <link rel="preload" as="image" href="images/coffee/Tea-Maru .jpg">    
 </head>
 <body>
     <!-- <div class="page-toggle" onclick="window.location.href='katelyn.html'">
@@ -276,15 +284,16 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Handle star ratings
             const starContainers = document.querySelectorAll('.stars');
-            
+
             starContainers.forEach(container => {
                 const rating = parseFloat(container.dataset.rating);
                 const stars = container.querySelectorAll('.star');
-                
+
                 stars.forEach((star, index) => {
                     const starNumber = index + 1;
-                    
+
                     if (rating >= starNumber) {
                         // Full star
                         star.classList.add('filled');
@@ -296,6 +305,18 @@
                     }
                     // Empty stars remain with default styling
                 });
+            });
+
+            // Handle image loading
+            const images = document.querySelectorAll('.coffee-card img');
+            images.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                    });
+                }
             });
         });
     </script>

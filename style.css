@@ -89,6 +89,12 @@ header p {
     height: 280px;
     object-fit: cover;
     object-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.coffee-card img.loaded {
+    opacity: 1;
 }
 
 .card-content {
