@@ -10,27 +10,20 @@
     <link rel="manifest" href="/images/site.webmanifest">
     <link rel="stylesheet" href="style.css">
 
-    <!-- Preload images -->
+    <!-- Preload above-the-fold images (first visible row) -->
     <link rel="preload" as="image" href="images/coffee/CoolMuang Coffee.jpg">
     <link rel="preload" as="image" href="images/coffee/Frenzy Coffee.jpg">
     <link rel="preload" as="image" href="images/coffee/Mandarin Coffee Stand.jpg">
-    <link rel="preload" as="image" href="images/coffee/Mishka's Cafe.jpg">
-    <link rel="preload" as="image" href="images/coffee/Sunright.jpg">
-    <link rel="preload" as="image" href="images/coffee/Tea-Maru .jpg">    
 </head>
 <body>
-    <!-- <div class="page-toggle" onclick="window.location.href='katelyn.html'">
-        ☾
-    </div> -->
-    
     <header>
         <h1>rachel rates</h1>
         <p>your local coffee connoisseur</p>
     </header>
-    
+
     <main class="coffee-grid">
         <div class="coffee-card">
-            <img src="images/coffee/CoolMuang Coffee.jpg" alt="CoolMuang Coffee">
+            <img src="images/coffee/CoolMuang Coffee.jpg" alt="CoolMuang Coffee" width="600" height="800" decoding="async" fetchpriority="high">
             <div class="card-content">
                 <div class="header-info">
                     <h2>CoolMuang Coffee</h2>
@@ -72,7 +65,7 @@
         </div>
 
         <div class="coffee-card">
-            <img src="images/coffee/Frenzy Coffee.jpg" alt="Frenzy Coffee">
+            <img src="images/coffee/Frenzy Coffee.jpg" alt="Frenzy Coffee" width="600" height="800" loading="lazy" decoding="async">
             <div class="card-content">
                 <div class="header-info">
                     <h2>Frenzy Coffee</h2>
@@ -114,7 +107,7 @@
         </div>
 
         <div class="coffee-card">
-            <img src="images/coffee/Mandarin Coffee Stand.jpg" alt="Mandarin Coffee Stand">
+            <img src="images/coffee/Mandarin Coffee Stand.jpg" alt="Mandarin Coffee Stand" width="600" height="800" loading="lazy" decoding="async">
             <div class="card-content">
                 <div class="header-info">
                     <h2>Mandarin Coffee Stand</h2>
@@ -156,7 +149,7 @@
         </div>
 
         <div class="coffee-card">
-            <img src="images/coffee/Mishka's Cafe.jpg" alt="Mishka's Cafe">
+            <img src="images/coffee/Mishka's Cafe.jpg" alt="Mishka's Cafe" width="800" height="800" loading="lazy" decoding="async">
             <div class="card-content">
                 <div class="header-info">
                     <h2>Mishka's Cafe</h2>
@@ -198,7 +191,7 @@
         </div>
 
         <div class="coffee-card">
-            <img src="images/coffee/Sunright.jpg" alt="Sunright">
+            <img src="images/coffee/Sunright.jpg" alt="Sunright" width="600" height="800" loading="lazy" decoding="async">
             <div class="card-content">
                 <div class="header-info">
                     <h2>Sunright Tea Studio</h2>
@@ -240,7 +233,7 @@
         </div>
 
         <div class="coffee-card">
-            <img src="images/coffee/Tea-Maru .jpg" alt="Tea-Maru">
+            <img src="images/coffee/Tea-Maru .jpg" alt="Tea-Maru" width="600" height="800" loading="lazy" decoding="async">
             <div class="card-content">
                 <div class="header-info">
                     <h2>Tea-Maru</h2>

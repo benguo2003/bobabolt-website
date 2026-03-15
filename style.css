@@ -13,31 +13,6 @@ body {
     position: relative;
 }
 
-.page-toggle {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
-    background: rgba(62, 39, 35, 0.8);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 20px;
-    color: #f5f1eb;
-    transition: all 0.3s ease;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(62, 39, 35, 0.3);
-}
-
-.page-toggle:hover {
-    background: rgba(62, 39, 35, 1);
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(62, 39, 35, 0.5);
-}
-
 header {
     text-align: center;
     padding: 3rem 2rem;
@@ -249,15 +224,15 @@ header p {
         padding: 0 1rem 2rem;
         max-width: 600px;
     }
-    
+
     header {
         padding: 2rem 1rem;
     }
-    
+
     header h1 {
         font-size: 2.2rem;
     }
-    
+
     .coffee-card {
         margin: 0 auto;
         width: 100%;
@@ -268,19 +243,19 @@ header p {
     header h1 {
         font-size: 1.8rem;
     }
-    
+
     .coffee-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
         padding: 0 1rem 1.5rem;
         max-width: none;
     }
-    
+
     .coffee-card {
         width: 100%;
         max-width: none;
     }
-    
+
     .card-content {
         padding: 1.2rem;
     }
