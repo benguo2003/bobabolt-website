@@ -4,109 +4,467 @@
     box-sizing: border-box;
 }
 
+/* ==========================================================================
+   Themes - every surface below reads from these tokens, so the two pages
+   share one layout and differ only in palette.
+   ========================================================================== */
+
+/* Coffee: morning. Cream ground, warm brown ink. */
+body.theme-coffee {
+    --bg: linear-gradient(135deg, #f5f1eb 0%, #ede4d1 100%);
+
+    --header-bg: rgba(255, 255, 255, 0.8);
+    --header-border: #d7ccc8;
+    --header-ink: #3e2723;
+    --header-ink-soft: #8d6e63;
+
+    --nav-ink: #8d6e63;
+    --nav-ink-active: #ffffff;
+    --nav-track: rgba(255, 255, 255, 0.55);
+    --nav-track-border: #d7ccc8;
+    --nav-active-bg: linear-gradient(135deg, #8d6e63 0%, #6d4c41 100%);
+    --nav-hover-bg: rgba(141, 110, 99, 0.16);
+    --nav-hover-ink: #4e342e;
+    --nav-glow: rgba(109, 76, 65, 0.28);
+
+    --ink: #5d4037;
+    --ink-strong: #3e2723;
+    --ink-soft: #8d6e63;
+
+    --card-bg: #ffffff;
+    --card-border: #efebe9;
+    --card-shadow: rgba(62, 39, 35, 0.1);
+    --card-shadow-hover: rgba(62, 39, 35, 0.15);
+    --rule: #f5f5f5;
+
+    --accent: #8d6e63;
+    --accent-soft: #a1887f;
+
+    --panel-bg: linear-gradient(135deg, #ede4d1 0%, #ddd0bb 100%);
+    --panel-bg-hover: linear-gradient(135deg, #f0e6cf 0%, #d8c8ad 100%);
+    --panel-border: #bcaaa4;
+    --panel-border-hover: #a1887f;
+    --panel-inset: rgba(62, 39, 35, 0.1);
+    --panel-inset-hover: rgba(62, 39, 35, 0.14);
+    --panel-glow: rgba(141, 110, 99, 0.18);
+    --glaze: rgba(255, 252, 244, 0.75);
+
+    --dish-bg: linear-gradient(135deg, #f8f4e6 0%, #f0e6d2 100%);
+    --soft-bg: #fafafa;
+    --chip-bg: #ffffff;
+    --chip-border: #e0e0e0;
+
+    --star-empty: #d7ccc8;
+    --star-empty-hover: #cdbfb7;
+    --star-fill: #8d6e63;
+    --star-fill-hover: #6d4c41;
+    --star-shadow: rgba(62, 39, 35, 0.2);
+    --star-shadow-hover: rgba(109, 76, 65, 0.35);
+}
+
+/* Restaurants: evening. Deep forest ground, ivory cards, copper accent. */
+body.theme-restaurants {
+    --bg: linear-gradient(160deg, #22302a 0%, #16211c 55%, #101a16 100%);
+
+    --header-bg: rgba(28, 40, 34, 0.72);
+    --header-border: #3a4d43;
+    --header-ink: #f4efe3;
+    --header-ink-soft: #a8bda8;
+
+    --nav-ink: #a8bda8;
+    --nav-ink-active: #1b2721;
+    --nav-track: rgba(255, 255, 255, 0.07);
+    --nav-track-border: #3a4d43;
+    --nav-active-bg: linear-gradient(135deg, #e8dcc4 0%, #cbb894 100%);
+    --nav-hover-bg: rgba(232, 220, 196, 0.14);
+    --nav-hover-ink: #f4efe3;
+    --nav-glow: rgba(203, 184, 148, 0.3);
+
+    --ink: #46403a;
+    --ink-strong: #241f1a;
+    --ink-soft: #7f7566;
+
+    --card-bg: #f8f4ec;
+    --card-border: #e6ddcd;
+    --card-shadow: rgba(6, 14, 10, 0.3);
+    --card-shadow-hover: rgba(6, 14, 10, 0.42);
+    --rule: #eae2d4;
+
+    --accent: #a85f3b;
+    --accent-soft: #c0855c;
+
+    --panel-bg: linear-gradient(135deg, #efe6d5 0%, #e2d4bd 100%);
+    --panel-bg-hover: linear-gradient(135deg, #f4ecdd 0%, #decdb2 100%);
+    --panel-border: #cdbca2;
+    --panel-border-hover: #b39a7a;
+    --panel-inset: rgba(36, 31, 26, 0.1);
+    --panel-inset-hover: rgba(36, 31, 26, 0.14);
+    --panel-glow: rgba(168, 95, 59, 0.2);
+    --glaze: rgba(255, 250, 240, 0.7);
+
+    --dish-bg: linear-gradient(135deg, #f3ecdd 0%, #ebdfc9 100%);
+    --soft-bg: #f3efe6;
+    --chip-bg: #ffffff;
+    --chip-border: #e3dacb;
+
+    --star-empty: #ded4c2;
+    --star-empty-hover: #d3c7b1;
+    --star-fill: #a85f3b;
+    --star-fill-hover: #8a4a2c;
+    --star-shadow: rgba(36, 31, 26, 0.2);
+    --star-shadow-hover: rgba(138, 74, 44, 0.35);
+
+    --plate-rule: #d8c9b2;
+    --plate-label: #a85f3b;
+}
+
 body {
     font-family: 'Georgia', 'Times New Roman', serif;
-    background: linear-gradient(135deg, #f5f1eb 0%, #ede4d1 100%);
+    background: var(--bg);
+    background-attachment: fixed;
     min-height: 100vh;
-    color: #5d4037;
+    color: var(--ink);
     line-height: 1.6;
     position: relative;
 }
 
+/* ==========================================================================
+   Header + tabs
+   ========================================================================== */
+
 header {
     text-align: center;
-    padding: 3rem 2rem;
-    background: rgba(255, 255, 255, 0.8);
+    padding: 2rem 2rem 1.5rem;
+    background: var(--header-bg);
     backdrop-filter: blur(10px);
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #d7ccc8;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--header-border);
 }
 
 header h1 {
-    font-size: 3rem;
-    color: #3e2723;
+    font-size: 2.5rem;
+    color: var(--header-ink);
     margin-bottom: 0.5rem;
     font-weight: 300;
     letter-spacing: 2px;
 }
 
 header p {
-    font-size: 1.2rem;
-    color: #8d6e63;
+    font-size: 1.1rem;
+    color: var(--header-ink-soft);
     font-style: italic;
 }
+
+.tabs {
+    display: inline-flex;
+    gap: 0.25rem;
+    margin-top: 1.1rem;
+    padding: 0.25rem;
+    background: var(--nav-track);
+    border: 1px solid var(--nav-track-border);
+    border-radius: 999px;
+    box-shadow: inset 0 1px 3px var(--panel-inset);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.tabs:hover {
+    border-color: var(--panel-border-hover);
+    box-shadow: inset 0 1px 3px var(--panel-inset-hover);
+}
+
+.tab {
+    position: relative;
+    z-index: 0;
+    display: block;
+    padding: 0.4rem 1.4rem;
+    border-radius: 999px;
+    overflow: hidden;
+    color: var(--nav-ink);
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    transition: color 0.35s ease, letter-spacing 0.45s cubic-bezier(0.34, 1.3, 0.5, 1),
+                transform 0.45s cubic-bezier(0.34, 1.3, 0.5, 1);
+}
+
+/* inactive tab: a pill wipes in from the centre */
+.tab::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 999px;
+    background: var(--nav-hover-bg);
+    transform: scaleX(0.2);
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.34, 1.3, 0.5, 1), opacity 0.3s ease;
+}
+
+.tab:hover::before,
+.tab:focus-visible::before {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+.tab:hover {
+    color: var(--nav-hover-ink);
+    letter-spacing: 0.08em;
+    transform: translateY(-1px);
+}
+
+.tab:focus-visible {
+    outline: 2px solid var(--panel-border-hover);
+    outline-offset: 2px;
+}
+
+.tab[aria-current="page"] {
+    background: var(--nav-active-bg);
+    color: var(--nav-ink-active);
+    box-shadow: 0 2px 8px var(--card-shadow);
+    transition: color 0.35s ease, box-shadow 0.45s ease,
+                letter-spacing 0.45s cubic-bezier(0.34, 1.3, 0.5, 1);
+}
+
+.tab[aria-current="page"]::before {
+    content: none;
+}
+
+/* the active pill catches the light whenever the nav is hovered */
+.tab[aria-current="page"]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -140%;
+    width: 65%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, var(--glaze), transparent);
+    transform: skewX(-18deg);
+    transition: left 0.85s cubic-bezier(0.33, 0.9, 0.35, 1);
+}
+
+.tabs:hover .tab[aria-current="page"]::after {
+    left: 180%;
+}
+
+.tabs:hover .tab[aria-current="page"] {
+    box-shadow: 0 2px 8px var(--card-shadow), 0 0 16px var(--nav-glow);
+}
+
+.tab[aria-current="page"]:hover {
+    color: var(--nav-ink-active);
+    transform: none;
+    letter-spacing: 0.07em;
+}
+
+/* ==========================================================================
+   Card grids
+   ========================================================================== */
 
 .coffee-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
     padding: 0 2rem 3rem;
     max-width: 1400px;
     margin: 0 auto;
 }
 
+/* The plates are shot portrait, so the columns are narrow — four across
+   lands the whole section in a single row. */
+.restaurant-grid {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    max-width: 1200px;
+}
+
+/* --------------------------------------------------------------------------
+   Restaurant cards read as a printed menu rather than a review row: centred,
+   tracked-out name, a copper flourish, then the dish set large in italic.
+   -------------------------------------------------------------------------- */
+
+.restaurant-grid .coffee-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurant-grid .coffee-card:hover {
+    box-shadow: 0 20px 40px var(--card-shadow-hover),
+                0 0 0 1px var(--plate-rule);
+}
+
+/* The frame matches the photos' native 3:4, so nothing is cropped away. */
+.restaurant-grid .coffee-card img {
+    height: auto;
+    aspect-ratio: 3 / 4;
+    transition: opacity 0.3s ease, transform 0.7s cubic-bezier(0.22, 0.7, 0.3, 1);
+}
+
+.restaurant-grid .coffee-card:hover img.loaded {
+    transform: scale(1.045);
+}
+
+.card-content.plate {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.2rem 1.1rem 1.35rem;
+}
+
+.plate .place {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    color: var(--ink-strong);
+    line-height: 1.4;
+    transition: letter-spacing 0.6s cubic-bezier(0.22, 0.7, 0.3, 1);
+}
+
+.coffee-card:hover .plate .place {
+    letter-spacing: 0.17em;
+}
+
+/* hairline — diamond — hairline */
+.flourish {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 0.75rem 0 0.85rem;
+    font-size: 0.5rem;
+    line-height: 1;
+    color: var(--accent);
+}
+
+.flourish .pip {
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.34, 1.3, 0.5, 1), color 0.5s ease;
+}
+
+.coffee-card:hover .flourish .pip {
+    transform: rotate(90deg) scale(1.25);
+    color: var(--accent-soft);
+}
+
+.flourish::before,
+.flourish::after {
+    content: '';
+    height: 1px;
+    width: 30px;
+    background: linear-gradient(90deg, transparent, var(--plate-rule));
+    transition: width 0.6s cubic-bezier(0.22, 0.7, 0.3, 1),
+                background 0.6s ease;
+}
+
+.flourish::after {
+    background: linear-gradient(90deg, var(--plate-rule), transparent);
+}
+
+.coffee-card:hover .flourish::before {
+    width: 44px;
+    background: linear-gradient(90deg, transparent, var(--accent-soft));
+}
+
+.coffee-card:hover .flourish::after {
+    width: 44px;
+    background: linear-gradient(90deg, var(--accent-soft), transparent);
+}
+
+.dish-label {
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--plate-label);
+    margin-bottom: 0.4rem;
+    transition: color 0.4s ease;
+}
+
+.dish {
+    font-size: 1.02rem;
+    font-style: italic;
+    color: var(--ink-strong);
+    line-height: 1.5;
+    max-width: 34ch;
+}
+
 .coffee-card {
-    background: #ffffff;
+    background: var(--card-bg);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(62, 39, 35, 0.1);
+    box-shadow: 0 10px 30px var(--card-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #efebe9;
+    border: 1px solid var(--card-border);
 }
 
 .coffee-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(62, 39, 35, 0.15);
+    box-shadow: 0 20px 40px var(--card-shadow-hover);
 }
 
 .coffee-card img {
     width: 100%;
-    height: 280px;
+    height: 210px;
     object-fit: cover;
     object-position: center;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
+
 .coffee-card img.loaded {
     opacity: 1;
 }
 
 .card-content {
-    padding: 1.5rem;
+    padding: 1.1rem 1.2rem 1.2rem;
+    line-height: 1.45;
 }
 
 .header-info {
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #f5f5f5;
-    padding-bottom: 1rem;
+    margin-bottom: 0.7rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.7rem;
 }
 
 .header-info h2 {
-    font-size: 1.4rem;
-    color: #3e2723;
-    margin-bottom: 0.3rem;
+    font-size: 1.35rem;
+    color: var(--ink-strong);
+    margin-bottom: 0.15rem;
     font-weight: 500;
 }
 
 .location {
-    color: #8d6e63;
-    font-size: 0.9rem;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
     font-style: italic;
 }
+
+/* ==========================================================================
+   Rating
+   ========================================================================== */
 
 .rating {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
-    padding: 0.8rem;
-    background: linear-gradient(135deg, #ede4d1 0%, #ddd0bb 100%);
+    margin-bottom: 0.9rem;
+    padding: 0.55rem 0.8rem;
+    background: var(--panel-bg);
     border-radius: 12px;
-    border: 1px solid #bcaaa4;
+    border: 1px solid var(--panel-border);
     position: relative;
     overflow: hidden;
-    box-shadow: inset 0 1px 3px rgba(62, 39, 35, 0.1);
+    box-shadow: inset 0 1px 3px var(--panel-inset);
+    transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.rating:hover {
+    background: var(--panel-bg-hover);
+    border-color: var(--panel-border-hover);
+    box-shadow: inset 0 1px 3px var(--panel-inset-hover),
+                0 2px 10px var(--panel-glow);
 }
 
 .rating::before {
@@ -116,8 +474,9 @@ header p {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-    transition: left 0.8s ease;
+    background: linear-gradient(100deg, transparent 20%, var(--glaze) 50%, transparent 80%);
+    transform: skewX(-14deg);
+    transition: left 0.9s cubic-bezier(0.33, 0.9, 0.35, 1);
 }
 
 .rating:hover::before {
@@ -132,55 +491,96 @@ header p {
 
 .star {
     position: relative;
-    font-size: 1.3rem;
-    color: #d7ccc8;
+    font-size: 1.25rem;
+    color: var(--star-empty);
     display: inline-block;
-    transition: all 0.3s ease;
+    transform-origin: 50% 70%;
+    transition: color 0.4s ease, text-shadow 0.4s ease;
 }
 
 .star.filled {
-    color: #8d6e63;
-    text-shadow: 0 1px 2px rgba(62, 39, 35, 0.2);
+    color: var(--star-fill);
+    text-shadow: 0 1px 2px var(--star-shadow);
 }
 
 .star.partial {
-    color: #d7ccc8;
+    color: var(--star-empty);
 }
 
 .star.partial::before {
     content: "★";
     position: absolute;
     left: 0;
-    color: #8d6e63;
-    text-shadow: 0 1px 2px rgba(62, 39, 35, 0.2);
+    color: var(--star-fill);
+    text-shadow: 0 1px 2px var(--star-shadow);
     overflow: hidden;
     width: var(--fill-percentage, 0%);
 }
 
-.rating-text {
-    font-weight: 600;
-    color: #3e2723;
-    font-size: 1.1rem;
+/* hover: the roast deepens and each star lifts in turn, like steam rising */
+.rating:hover .star {
+    color: var(--star-empty-hover);
 }
 
+.rating:hover .star.filled,
+.rating:hover .star.partial::before {
+    color: var(--star-fill-hover);
+    text-shadow: 0 2px 5px var(--star-shadow-hover);
+}
+
+.rating:hover .star {
+    animation: star-bloom 0.75s cubic-bezier(0.34, 1.4, 0.5, 1) both;
+}
+
+.rating:hover .star:nth-child(1) { animation-delay: 0s; }
+.rating:hover .star:nth-child(2) { animation-delay: 0.07s; }
+.rating:hover .star:nth-child(3) { animation-delay: 0.14s; }
+.rating:hover .star:nth-child(4) { animation-delay: 0.21s; }
+.rating:hover .star:nth-child(5) { animation-delay: 0.28s; }
+
+@keyframes star-bloom {
+    0%   { transform: translateY(0) scale(1) rotate(0deg); }
+    45%  { transform: translateY(-5px) scale(1.2) rotate(-7deg); }
+    75%  { transform: translateY(1px) scale(0.98) rotate(2deg); }
+    100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+.rating-text {
+    font-weight: 600;
+    color: var(--ink-strong);
+    font-size: 1.05rem;
+    display: inline-block;
+    letter-spacing: 0.02em;
+    transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.5, 1), letter-spacing 0.45s ease;
+}
+
+.rating:hover .rating-text {
+    transform: scale(1.07);
+    letter-spacing: 0.06em;
+}
+
+/* ==========================================================================
+   Order / dish + criteria
+   ========================================================================== */
+
 .order-section {
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: linear-gradient(135deg, #f8f4e6 0%, #f0e6d2 100%);
+    margin-bottom: 0.9rem;
+    padding: 0.7rem 0.9rem;
+    background: var(--dish-bg);
     border-radius: 12px;
-    border-left: 4px solid #8d6e63;
+    border-left: 4px solid var(--accent);
 }
 
 .order-section h3 {
-    font-size: 1rem;
-    color: #3e2723;
-    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--ink-strong);
+    margin-bottom: 0.2rem;
     font-weight: 600;
 }
 
 .order-item {
-    color: #5d4037;
-    font-size: 0.95rem;
+    color: var(--ink);
+    font-size: 0.9rem;
     font-style: italic;
     margin: 0;
     font-weight: 500;
@@ -188,34 +588,38 @@ header p {
 
 .criteria {
     display: grid;
-    gap: 0.8rem;
+    gap: 0.45rem;
 }
 
 .criterion {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.6rem;
-    background: #fafafa;
+    padding: 0.42rem 0.6rem;
+    background: var(--soft-bg);
     border-radius: 8px;
-    border-left: 4px solid #a1887f;
+    border-left: 4px solid var(--accent-soft);
 }
 
 .criterion .label {
     font-weight: 500;
-    color: #5d4037;
-    font-size: 0.9rem;
+    color: var(--ink);
+    font-size: 0.85rem;
 }
 
 .criterion .value {
     font-weight: 600;
-    color: #3e2723;
-    background: #ffffff;
-    padding: 0.3rem 0.8rem;
+    color: var(--ink-strong);
+    background: var(--chip-bg);
+    padding: 0.2rem 0.7rem;
     border-radius: 20px;
-    font-size: 0.85rem;
-    border: 1px solid #e0e0e0;
+    font-size: 0.8rem;
+    border: 1px solid var(--chip-border);
 }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
 
 @media (max-width: 768px) {
     .coffee-grid {
@@ -225,8 +629,13 @@ header p {
         max-width: 600px;
     }
 
+    .restaurant-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
+
     header {
-        padding: 2rem 1rem;
+        padding: 2rem 1rem 1.5rem;
     }
 
     header h1 {
@@ -244,6 +653,11 @@ header p {
         font-size: 1.8rem;
     }
 
+    .tab {
+        padding: 0.4rem 1.1rem;
+        font-size: 0.9rem;
+    }
+
     .coffee-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -258,5 +672,17 @@ header p {
 
     .card-content {
         padding: 1.2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rating::before,
+    .rating:hover .star,
+    .rating:hover .rating-text,
+    .coffee-card,
+    .tab {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
     }
 }
