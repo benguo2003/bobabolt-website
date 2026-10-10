@@ -1,2 +1,4 @@
 images/coffee/originals/
 images/restaurants/originals/
+.playwright-mcp/
+.DS_Store

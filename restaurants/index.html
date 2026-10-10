@@ -4,82 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rachel rates &middot; restaurants</title>
+    <meta name="description" content="Rachel Li's restaurant picks — one place, one dish worth ordering.">
+    <meta name="theme-color" content="#16211c">
+    <link rel="canonical" href="https://www.bobabolt.me/restaurants">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="rachel rates">
+    <meta property="og:title" content="rachel rates · restaurants">
+    <meta property="og:description" content="Rachel Li's restaurant picks — one place, one dish worth ordering.">
+    <meta property="og:url" content="https://www.bobabolt.me/restaurants">
+    <meta property="og:image" content="https://www.bobabolt.me/images/restaurants/Bone%20Kettle.jpg">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/images/site.webmanifest">
-    <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add('js')</script>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
 
     <!-- Preload above-the-fold images (first visible row) -->
-    <link rel="preload" as="image" href="images/restaurants/Entre Nous French Bistro.jpg">
-    <link rel="preload" as="image" href="images/restaurants/Xi'an Foodie.jpg">
+    <link rel="preload" as="image" href="/images/restaurants/Entre Nous French Bistro.jpg">
+    <link rel="preload" as="image" href="/images/restaurants/Xi'an Foodie.jpg">
 </head>
 <body class="theme-restaurants">
     <header>
         <h1>rachel rates</h1>
-        <p>your local restaurant connoisseur</p>
+        <p class="tagline">your local restaurant connoisseur</p>
         <nav class="tabs" aria-label="Sections">
-            <a class="tab" href="index.html">coffee</a>
-            <a class="tab" href="restaurants.html" aria-current="page">restaurants</a>
+            <a class="tab" href="/" data-section="coffee"><span class="tab-label">coffee</span></a>
+            <a class="tab" href="/restaurants" data-section="restaurants" aria-current="page"><span class="tab-label">restaurants</span></a>
         </nav>
     </header>
 
     <main class="coffee-grid restaurant-grid">
-        <div class="coffee-card">
-            <img src="images/restaurants/Entre Nous French Bistro.jpg" alt="Entre Nous French Bistro" width="660" height="880" decoding="async" fetchpriority="high">
+        <article class="coffee-card">
+            <img src="/images/restaurants/Entre Nous French Bistro.jpg" alt="Entre Nous French Bistro" width="660" height="880" decoding="async" fetchpriority="high">
             <div class="card-content plate">
                 <h2 class="place">Entre Nous French Bistro</h2>
                 <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
                 <p class="dish-label">the dish</p>
                 <p class="dish">Mousse au Chocolat</p>
             </div>
-        </div>
+        </article>
 
-        <div class="coffee-card">
-            <img src="images/restaurants/Xi'an Foodie.jpg" alt="Xi'an Foodie" width="660" height="880" decoding="async" fetchpriority="high">
+        <article class="coffee-card">
+            <img src="/images/restaurants/Xi'an Foodie.jpg" alt="Xi'an Foodie" width="660" height="880" decoding="async" fetchpriority="high">
             <div class="card-content plate">
                 <h2 class="place">Xi'an Foodie</h2>
                 <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
                 <p class="dish-label">the dish</p>
                 <p class="dish">Youpo Noodles with Braised Beef Brisket, Beef Paste, and Fried Eggs with Tomato</p>
             </div>
-        </div>
+        </article>
 
-        <div class="coffee-card">
-            <img src="images/restaurants/Bone Kettle.jpg" alt="Bone Kettle" width="660" height="880" loading="lazy" decoding="async">
+        <article class="coffee-card">
+            <img src="/images/restaurants/Bone Kettle.jpg" alt="Bone Kettle" width="660" height="880" decoding="async">
             <div class="card-content plate">
                 <h2 class="place">Bone Kettle</h2>
                 <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
                 <p class="dish-label">the dish</p>
                 <p class="dish">Nasi Uduk</p>
             </div>
-        </div>
+        </article>
 
-        <div class="coffee-card">
-            <img src="images/restaurants/Juniper and Ivy.jpg" alt="Juniper &amp; Ivy" width="660" height="880" loading="lazy" decoding="async">
+        <article class="coffee-card">
+            <img src="/images/restaurants/Juniper and Ivy.jpg" alt="Juniper &amp; Ivy" width="660" height="880" decoding="async">
             <div class="card-content plate">
                 <h2 class="place">Juniper &amp; Ivy</h2>
                 <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
                 <p class="dish-label">the dish</p>
                 <p class="dish">Butter Chicken Kebab and Prime Flat Iron</p>
             </div>
-        </div>
+        </article>
     </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Handle image loading
-            const images = document.querySelectorAll('.coffee-card img');
-            images.forEach(img => {
-                if (img.complete) {
-                    img.classList.add('loaded');
-                } else {
-                    img.addEventListener('load', function() {
-                        this.classList.add('loaded');
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>

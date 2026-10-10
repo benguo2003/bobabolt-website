@@ -31,11 +31,10 @@ body.theme-coffee {
     --ink-strong: #3e2723;
     --ink-soft: #8d6e63;
 
-    --card-bg: #ffffff;
-    --card-border: #efebe9;
+    --card-bg: #fffcf7;
+    --card-border: #efe6da;
     --card-shadow: rgba(62, 39, 35, 0.1);
     --card-shadow-hover: rgba(62, 39, 35, 0.15);
-    --rule: #f5f5f5;
 
     --accent: #8d6e63;
     --accent-soft: #a1887f;
@@ -49,10 +48,6 @@ body.theme-coffee {
     --panel-glow: rgba(141, 110, 99, 0.18);
     --glaze: rgba(255, 252, 244, 0.75);
 
-    --dish-bg: linear-gradient(135deg, #f8f4e6 0%, #f0e6d2 100%);
-    --soft-bg: #fafafa;
-    --chip-bg: #ffffff;
-    --chip-border: #e0e0e0;
 
     --star-empty: #d7ccc8;
     --star-empty-hover: #cdbfb7;
@@ -60,6 +55,10 @@ body.theme-coffee {
     --star-fill-hover: #6d4c41;
     --star-shadow: rgba(62, 39, 35, 0.2);
     --star-shadow-hover: rgba(109, 76, 65, 0.35);
+
+    --plate-rule: #e8ddcf;
+    --plate-label: #9a6a4f;
+    --vt-glow: rgba(186, 136, 88, 0.42);
 }
 
 /* Restaurants: evening. Deep forest ground, ivory cards, copper accent. */
@@ -88,7 +87,6 @@ body.theme-restaurants {
     --card-border: #e6ddcd;
     --card-shadow: rgba(6, 14, 10, 0.3);
     --card-shadow-hover: rgba(6, 14, 10, 0.42);
-    --rule: #eae2d4;
 
     --accent: #a85f3b;
     --accent-soft: #c0855c;
@@ -102,10 +100,6 @@ body.theme-restaurants {
     --panel-glow: rgba(168, 95, 59, 0.2);
     --glaze: rgba(255, 250, 240, 0.7);
 
-    --dish-bg: linear-gradient(135deg, #f3ecdd 0%, #ebdfc9 100%);
-    --soft-bg: #f3efe6;
-    --chip-bg: #ffffff;
-    --chip-border: #e3dacb;
 
     --star-empty: #ded4c2;
     --star-empty-hover: #d3c7b1;
@@ -116,16 +110,35 @@ body.theme-restaurants {
 
     --plate-rule: #d8c9b2;
     --plate-label: #a85f3b;
+    --vt-glow: rgba(214, 152, 96, 0.55);
+}
+
+/* overscroll / rubber-band colour, matched to each ground */
+html {
+    background: #f1ebe0;
+}
+
+html:has(body.theme-restaurants) {
+    background: #16211c;
+    color-scheme: dark;
 }
 
 body {
     font-family: 'Georgia', 'Times New Roman', serif;
-    background: var(--bg);
-    background-attachment: fixed;
     min-height: 100vh;
     color: var(--ink);
     line-height: 1.6;
     position: relative;
+}
+
+/* The ground lives on its own fixed layer: same look as
+   background-attachment: fixed, without repainting on every scroll. */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: var(--bg);
 }
 
 /* ==========================================================================
@@ -136,7 +149,6 @@ header {
     text-align: center;
     padding: 2rem 2rem 1.5rem;
     background: var(--header-bg);
-    backdrop-filter: blur(10px);
     margin-bottom: 1.5rem;
     border-bottom: 1px solid var(--header-border);
 }
@@ -295,11 +307,6 @@ header p {
 .restaurant-grid .coffee-card img {
     height: auto;
     aspect-ratio: 3 / 4;
-    transition: opacity 0.3s ease, transform 0.7s cubic-bezier(0.22, 0.7, 0.3, 1);
-}
-
-.restaurant-grid .coffee-card:hover img.loaded {
-    transform: scale(1.045);
 }
 
 .card-content.plate {
@@ -307,9 +314,8 @@ header p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
-    padding: 1.2rem 1.1rem 1.35rem;
+    padding: 1.3rem 1.1rem 1.4rem;
 }
 
 .plate .place {
@@ -404,41 +410,129 @@ header p {
 }
 
 .coffee-card img {
+    display: block;
     width: 100%;
-    height: 210px;
+    height: 300px;
     object-fit: cover;
     object-position: center;
+    transition: opacity 0.4s ease, transform 0.7s cubic-bezier(0.22, 0.7, 0.3, 1);
+}
+
+/* photos fade in once loaded (app.js adds .loaded); without JS they just show */
+.js .coffee-card img:not(.loaded) {
     opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
-
-.coffee-card img.loaded {
-    opacity: 1;
+.coffee-card:hover img.loaded {
+    transform: scale(1.045);
 }
+
+/* cards rise into place on arrival — on load and after every tab switch */
+@keyframes card-rise {
+    from {
+        opacity: 0;
+        transform: translateY(28px) scale(0.985);
+    }
+}
+
+.js .coffee-card {
+    animation: card-rise 0.85s cubic-bezier(0.2, 0.75, 0.25, 1) backwards;
+}
+
+.coffee-card:nth-child(2) { animation-delay: 0.07s; }
+.coffee-card:nth-child(3) { animation-delay: 0.14s; }
+.coffee-card:nth-child(4) { animation-delay: 0.21s; }
+.coffee-card:nth-child(5) { animation-delay: 0.28s; }
+.coffee-card:nth-child(6) { animation-delay: 0.35s; }
+.coffee-card:nth-child(n+7) { animation-delay: 0.42s; }
 
 .card-content {
     padding: 1.1rem 1.2rem 1.2rem;
     line-height: 1.45;
 }
 
-.header-info {
-    margin-bottom: 0.7rem;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 0.7rem;
+/* --------------------------------------------------------------------------
+   Coffee cards: the café sibling of the restaurant plate. Name set large,
+   location in tracked caps, a rating pill, the same flourish, then the
+   order in italic over a hairline-ruled 2x2 of tasting notes.
+   -------------------------------------------------------------------------- */
+
+.card-content.cup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.2rem 1.3rem 1.15rem;
 }
 
-.header-info h2 {
-    font-size: 1.35rem;
+.cup .name {
+    font-size: 1.42rem;
+    font-weight: 400;
     color: var(--ink-strong);
-    margin-bottom: 0.15rem;
-    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0.005em;
+    transition: letter-spacing 0.6s cubic-bezier(0.22, 0.7, 0.3, 1);
+}
+
+.coffee-card:hover .cup .name {
+    letter-spacing: 0.025em;
 }
 
 .location {
+    margin-top: 0.3rem;
     color: var(--ink-soft);
-    font-size: 0.85rem;
-    font-style: italic;
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.cup .flourish {
+    margin: 0.85rem 0 0.7rem;
+}
+
+.cup .dish {
+    font-size: 1.08rem;
+}
+
+.notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    margin-top: 0.95rem;
+    border-top: 1px solid var(--plate-rule);
+}
+
+.notes > div {
+    padding: 0.55rem 0.4rem 0.45rem;
+}
+
+.notes > div:nth-child(odd) {
+    border-right: 1px solid var(--plate-rule);
+}
+
+.notes > div:nth-child(n+3) {
+    border-top: 1px solid var(--plate-rule);
+}
+
+.notes dt {
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    margin-bottom: 0.1rem;
+}
+
+.notes dd {
+    font-size: 0.92rem;
+    color: var(--ink-strong);
+}
+
+.price {
+    letter-spacing: 0.08em;
+}
+
+.price-off {
+    opacity: 0.25;
 }
 
 /* ==========================================================================
@@ -446,13 +540,13 @@ header p {
    ========================================================================== */
 
 .rating {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.9rem;
-    padding: 0.55rem 0.8rem;
+    gap: 0.7rem;
+    margin-top: 0.85rem;
+    padding: 0.32rem 0.95rem 0.32rem 0.8rem;
     background: var(--panel-bg);
-    border-radius: 12px;
+    border-radius: 999px;
     border: 1px solid var(--panel-border);
     position: relative;
     overflow: hidden;
@@ -491,7 +585,7 @@ header p {
 
 .star {
     position: relative;
-    font-size: 1.25rem;
+    font-size: 1.12rem;
     color: var(--star-empty);
     display: inline-block;
     transform-origin: 50% 70%;
@@ -548,10 +642,17 @@ header p {
 .rating-text {
     font-weight: 600;
     color: var(--ink-strong);
-    font-size: 1.05rem;
+    font-size: 0.98rem;
     display: inline-block;
     letter-spacing: 0.02em;
     transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.5, 1), letter-spacing 0.45s ease;
+}
+
+.rating-text small {
+    font-size: 0.72em;
+    font-weight: 400;
+    color: var(--ink-soft);
+    margin-left: 0.05em;
 }
 
 .rating:hover .rating-text {
@@ -560,61 +661,77 @@ header p {
 }
 
 /* ==========================================================================
-   Order / dish + criteria
+   Tab transition (driven by app.js)
+
+   The new page is revealed through a circle growing from the click; the
+   old page sinks or brightens underneath; a soft glow (.vt-ring) rides
+   the circle's edge; the active pill slides between tabs. Scoped to
+   [data-vt] so a plain cross-document navigation keeps the default fade.
    ========================================================================== */
 
-.order-section {
-    margin-bottom: 0.9rem;
-    padding: 0.7rem 0.9rem;
-    background: var(--dish-bg);
-    border-radius: 12px;
-    border-left: 4px solid var(--accent);
+@view-transition {
+    navigation: auto;
 }
 
-.order-section h3 {
-    font-size: 0.95rem;
-    color: var(--ink-strong);
-    margin-bottom: 0.2rem;
-    font-weight: 600;
+:root[data-vt]::view-transition-old(root),
+:root[data-vt]::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
 }
 
-.order-item {
-    color: var(--ink);
-    font-size: 0.9rem;
-    font-style: italic;
-    margin: 0;
-    font-weight: 500;
+:root[data-vt]::view-transition {
+    background: #0d1511;
 }
 
-.criteria {
-    display: grid;
-    gap: 0.45rem;
+:root[data-vt="coffee"]::view-transition {
+    background: #f6efe2;
 }
 
-.criterion {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.42rem 0.6rem;
-    background: var(--soft-bg);
-    border-radius: 8px;
-    border-left: 4px solid var(--accent-soft);
+.tab[aria-current="page"] {
+    view-transition-name: active-tab;
 }
 
-.criterion .label {
-    font-weight: 500;
-    color: var(--ink);
-    font-size: 0.85rem;
+/* The labels are named separately so they leave the pill's snapshot: the
+   pill slides as a bare shape and each word recolours in place above it. */
+.tab-label {
+    position: relative;
 }
 
-.criterion .value {
-    font-weight: 600;
-    color: var(--ink-strong);
-    background: var(--chip-bg);
-    padding: 0.2rem 0.7rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    border: 1px solid var(--chip-border);
+.tab[data-section="coffee"] .tab-label {
+    view-transition-name: tab-label-coffee;
+}
+
+.tab[data-section="restaurants"] .tab-label {
+    view-transition-name: tab-label-restaurants;
+}
+
+::view-transition-group(active-tab),
+::view-transition-group(tab-label-coffee),
+::view-transition-group(tab-label-restaurants) {
+    animation-duration: 0.75s;
+    animation-timing-function: cubic-bezier(0.5, 0, 0.2, 1);
+}
+
+/* stacking: page < glow < pill < words (default order follows the DOM,
+   which would let the pill cover the word it slides under) */
+::view-transition-group(vt-ring) { z-index: 1; }
+::view-transition-group(active-tab) { z-index: 2; }
+::view-transition-group(tab-label-coffee),
+::view-transition-group(tab-label-restaurants) { z-index: 3; }
+
+.vt-ring {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 0 -100px;
+    border-radius: 50%;
+    pointer-events: none;
+    view-transition-name: vt-ring;
+    background: radial-gradient(closest-side, transparent 72%, var(--vt-glow) 94%, transparent 100%);
+}
+
+::view-transition-new(vt-ring) {
+    animation: none;
 }
 
 /* ==========================================================================
@@ -680,6 +797,7 @@ header p {
     .rating:hover .star,
     .rating:hover .rating-text,
     .coffee-card,
+    .coffee-card img,
     .tab {
         animation: none !important;
         transition: none !important;

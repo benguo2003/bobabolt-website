@@ -4,444 +4,281 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rachel rates</title>
+    <meta name="description" content="Rachel Li's coffee shop reviews — what she ordered, how it tasted, and whether you can study there.">
+    <meta name="theme-color" content="#f5f1eb">
+    <link rel="canonical" href="https://www.bobabolt.me/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="rachel rates">
+    <meta property="og:title" content="rachel rates · coffee">
+    <meta property="og:description" content="Rachel Li's coffee shop reviews — what she ordered, how it tasted, and whether you can study there.">
+    <meta property="og:url" content="https://www.bobabolt.me/">
+    <meta property="og:image" content="https://www.bobabolt.me/images/coffee/Philz.jpg">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/images/site.webmanifest">
-    <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add('js')</script>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
 
     <!-- Preload above-the-fold images (first visible row) -->
-    <link rel="preload" as="image" href="images/coffee/CoolMuang Coffee.jpg">
-    <link rel="preload" as="image" href="images/coffee/Frenzy Coffee.jpg">
-    <link rel="preload" as="image" href="images/coffee/Mandarin Coffee Stand.jpg">
+    <link rel="preload" as="image" href="/images/coffee/CoolMuang Coffee.jpg">
+    <link rel="preload" as="image" href="/images/coffee/Frenzy Coffee.jpg">
+    <link rel="preload" as="image" href="/images/coffee/Mandarin Coffee Stand.jpg">
 </head>
 <body class="theme-coffee">
     <header>
         <h1>rachel rates</h1>
-        <p>your local coffee connoisseur</p>
+        <p class="tagline">your local coffee connoisseur</p>
         <nav class="tabs" aria-label="Sections">
-            <a class="tab" href="index.html" aria-current="page">coffee</a>
-            <a class="tab" href="restaurants.html">restaurants</a>
+            <a class="tab" href="/" data-section="coffee" aria-current="page"><span class="tab-label">coffee</span></a>
+            <a class="tab" href="/restaurants" data-section="restaurants"><span class="tab-label">restaurants</span></a>
         </nav>
     </header>
 
     <main class="coffee-grid">
-        <div class="coffee-card">
-            <img src="images/coffee/CoolMuang Coffee.jpg" alt="CoolMuang Coffee" width="600" height="800" decoding="async" fetchpriority="high">
-            <div class="card-content">
-                <div class="header-info">
-                    <h2>CoolMuang Coffee</h2>
-                    <p class="location">Chiang Mai, Thailand</p>
+        <article class="coffee-card">
+            <img src="/images/coffee/CoolMuang Coffee.jpg" alt="CoolMuang Coffee" width="600" height="800" decoding="async" fetchpriority="high">
+            <div class="card-content cup">
+                <h2 class="name">CoolMuang Coffee</h2>
+                <p class="location">Chiang Mai, Thailand</p>
+                <div class="rating" role="img" aria-label="Rated 4.5 out of 5">
+                    <div class="stars" data-rating="4.5" aria-hidden="true">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="rating-text" aria-hidden="true">4.5<small>/5</small></span>
                 </div>
-                <div class="rating">
-                    <div class="stars" data-rating="4.5">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <span class="rating-text">4.5/5</span>
-                </div>
-                <div class="order-section">
-                    <h3>What I Ordered:</h3>
-                    <p class="order-item">Iced Matcha Green Tea</p>
-                </div>
-                <div class="criteria">
-                    <div class="criterion">
-                        <span class="label">Study-ability:</span>
-                        <span class="value">Great</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Aesthetic:</span>
-                        <span class="value">Modern</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Price:</span>
-                        <span class="value">$</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Flavor:</span>
-                        <span class="value">Rich & Bold</span>
-                    </div>
-                </div>
+                <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
+                <p class="dish-label">the order</p>
+                <p class="dish">Iced Matcha Green Tea</p>
+                <dl class="notes">
+                    <div><dt>study-ability</dt><dd>Great</dd></div>
+                    <div><dt>aesthetic</dt><dd>Modern</dd></div>
+                    <div><dt>price</dt><dd class="price" data-price="1">$</dd></div>
+                    <div><dt>flavor</dt><dd>Rich &amp; Bold</dd></div>
+                </dl>
             </div>
-        </div>
+        </article>
 
-        <div class="coffee-card">
-            <img src="images/coffee/Frenzy Coffee.jpg" alt="Frenzy Coffee" width="600" height="800" loading="lazy" decoding="async">
-            <div class="card-content">
-                <div class="header-info">
-                    <h2>Frenzy Coffee</h2>
-                    <p class="location">Downtown Davis, USA</p>
+        <article class="coffee-card">
+            <img src="/images/coffee/Frenzy Coffee.jpg" alt="Frenzy Coffee" width="600" height="800" decoding="async" fetchpriority="high">
+            <div class="card-content cup">
+                <h2 class="name">Frenzy Coffee</h2>
+                <p class="location">Downtown Davis, USA</p>
+                <div class="rating" role="img" aria-label="Rated 4.3 out of 5">
+                    <div class="stars" data-rating="4.3" aria-hidden="true">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="rating-text" aria-hidden="true">4.3<small>/5</small></span>
                 </div>
-                <div class="rating">
-                    <div class="stars" data-rating="4.3">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <span class="rating-text">4.3/5</span>
-                </div>
-                <div class="order-section">
-                    <h3>What I Ordered:</h3>
-                    <p class="order-item">Iced Vanilla Latte</p>
-                </div>
-                <div class="criteria">
-                    <div class="criterion">
-                        <span class="label">Study-ability:</span>
-                        <span class="value">Excellent</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Aesthetic:</span>
-                        <span class="value">Cozy & Modern</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Price:</span>
-                        <span class="value">$$$</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Flavor:</span>
-                        <span class="value">Light & Sweet</span>
-                    </div>
-                </div>
+                <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
+                <p class="dish-label">the order</p>
+                <p class="dish">Iced Vanilla Latte</p>
+                <dl class="notes">
+                    <div><dt>study-ability</dt><dd>Excellent</dd></div>
+                    <div><dt>aesthetic</dt><dd>Cozy &amp; Modern</dd></div>
+                    <div><dt>price</dt><dd class="price" data-price="3">$$$</dd></div>
+                    <div><dt>flavor</dt><dd>Light &amp; Sweet</dd></div>
+                </dl>
             </div>
-        </div>
+        </article>
 
-        <div class="coffee-card">
-            <img src="images/coffee/Mandarin Coffee Stand.jpg" alt="Mandarin Coffee Stand" width="600" height="800" loading="lazy" decoding="async">
-            <div class="card-content">
-                <div class="header-info">
-                    <h2>Mandarin Coffee Stand</h2>
-                    <p class="location">Pasadena, USA</p>
+        <article class="coffee-card">
+            <img src="/images/coffee/Mandarin Coffee Stand.jpg" alt="Mandarin Coffee Stand" width="600" height="800" decoding="async" fetchpriority="high">
+            <div class="card-content cup">
+                <h2 class="name">Mandarin Coffee Stand</h2>
+                <p class="location">Pasadena, USA</p>
+                <div class="rating" role="img" aria-label="Rated 4.0 out of 5">
+                    <div class="stars" data-rating="4.0" aria-hidden="true">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="rating-text" aria-hidden="true">4.0<small>/5</small></span>
                 </div>
-                <div class="rating">
-                    <div class="stars" data-rating="4.0">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <span class="rating-text">4.0/5</span>
-                </div>
-                <div class="order-section">
-                    <h3>What I Ordered:</h3>
-                    <p class="order-item">Cappuccino with extra sugar</p>
-                </div>
-                <div class="criteria">
-                    <div class="criterion">
-                        <span class="label">Study-ability:</span>
-                        <span class="value">Fair</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Aesthetic:</span>
-                        <span class="value">Casual & Homey</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Price:</span>
-                        <span class="value">$$$</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Flavor:</span>
-                        <span class="value">Smooth & Creamy</span>
-                    </div>
-                </div>
+                <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
+                <p class="dish-label">the order</p>
+                <p class="dish">Cappuccino with extra sugar</p>
+                <dl class="notes">
+                    <div><dt>study-ability</dt><dd>Fair</dd></div>
+                    <div><dt>aesthetic</dt><dd>Casual &amp; Homey</dd></div>
+                    <div><dt>price</dt><dd class="price" data-price="3">$$$</dd></div>
+                    <div><dt>flavor</dt><dd>Smooth &amp; Creamy</dd></div>
+                </dl>
             </div>
-        </div>
+        </article>
 
-        <div class="coffee-card">
-            <img src="images/coffee/Mishka's Cafe.jpg" alt="Mishka's Cafe" width="800" height="800" loading="lazy" decoding="async">
-            <div class="card-content">
-                <div class="header-info">
-                    <h2>Mishka's Cafe</h2>
-                    <p class="location">Downtown Davis, USA</p>
+        <article class="coffee-card">
+            <img src="/images/coffee/Mishka's Cafe.jpg" alt="Mishka's Cafe" width="800" height="800" decoding="async" loading="lazy">
+            <div class="card-content cup">
+                <h2 class="name">Mishka's Cafe</h2>
+                <p class="location">Downtown Davis, USA</p>
+                <div class="rating" role="img" aria-label="Rated 5.0 out of 5">
+                    <div class="stars" data-rating="5.0" aria-hidden="true">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="rating-text" aria-hidden="true">5.0<small>/5</small></span>
                 </div>
-                <div class="rating">
-                    <div class="stars" data-rating="5.0">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <span class="rating-text">5.0/5</span>
-                </div>
-                <div class="order-section">
-                    <h3>What I Ordered:</h3>
-                    <p class="order-item">Rose Latte</p>
-                </div>
-                <div class="criteria">
-                    <div class="criterion">
-                        <span class="label">Study-ability:</span>
-                        <span class="value">Perfect</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Aesthetic:</span>
-                        <span class="value">Artsy & Cozy</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Price:</span>
-                        <span class="value">$$</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Flavor:</span>
-                        <span class="value">Rich & Nutty</span>
-                    </div>
-                </div>
+                <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
+                <p class="dish-label">the order</p>
+                <p class="dish">Rose Latte</p>
+                <dl class="notes">
+                    <div><dt>study-ability</dt><dd>Perfect</dd></div>
+                    <div><dt>aesthetic</dt><dd>Artsy &amp; Cozy</dd></div>
+                    <div><dt>price</dt><dd class="price" data-price="2">$$</dd></div>
+                    <div><dt>flavor</dt><dd>Rich &amp; Nutty</dd></div>
+                </dl>
             </div>
-        </div>
+        </article>
 
-        <div class="coffee-card">
-            <img src="images/coffee/Sunright.jpg" alt="Sunright" width="600" height="800" loading="lazy" decoding="async">
-            <div class="card-content">
-                <div class="header-info">
-                    <h2>Sunright Tea Studio</h2>
-                    <p class="location">Arcadia, USA</p>
+        <article class="coffee-card">
+            <img src="/images/coffee/Sunright.jpg" alt="Sunright" width="600" height="800" decoding="async" loading="lazy">
+            <div class="card-content cup">
+                <h2 class="name">Sunright Tea Studio</h2>
+                <p class="location">Arcadia, USA</p>
+                <div class="rating" role="img" aria-label="Rated 4.5 out of 5">
+                    <div class="stars" data-rating="4.5" aria-hidden="true">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="rating-text" aria-hidden="true">4.5<small>/5</small></span>
                 </div>
-                <div class="rating">
-                    <div class="stars" data-rating="4.5">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <span class="rating-text">4.5/5</span>
-                </div>
-                <div class="order-section">
-                    <h3>What I Ordered:</h3>
-                    <p class="order-item">Mango Yakult with Boba</p>
-                </div>
-                <div class="criteria">
-                    <div class="criterion">
-                        <span class="label">Study-ability:</span>
-                        <span class="value">Great</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Aesthetic:</span>
-                        <span class="value">Bright & Airy</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Price:</span>
-                        <span class="value">$$</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Flavor:</span>
-                        <span class="value">Fruity & Sweet</span>
-                    </div>
-                </div>
+                <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
+                <p class="dish-label">the order</p>
+                <p class="dish">Mango Yakult with Boba</p>
+                <dl class="notes">
+                    <div><dt>study-ability</dt><dd>Great</dd></div>
+                    <div><dt>aesthetic</dt><dd>Bright &amp; Airy</dd></div>
+                    <div><dt>price</dt><dd class="price" data-price="2">$$</dd></div>
+                    <div><dt>flavor</dt><dd>Fruity &amp; Sweet</dd></div>
+                </dl>
             </div>
-        </div>
+        </article>
 
-        <div class="coffee-card">
-            <img src="images/coffee/Tea-Maru .jpg" alt="Tea-Maru" width="600" height="800" loading="lazy" decoding="async">
-            <div class="card-content">
-                <div class="header-info">
-                    <h2>Tea-Maru</h2>
-                    <p class="location">San Marino, USA</p>
+        <article class="coffee-card">
+            <img src="/images/coffee/Tea-Maru .jpg" alt="Tea-Maru" width="600" height="800" decoding="async" loading="lazy">
+            <div class="card-content cup">
+                <h2 class="name">Tea-Maru</h2>
+                <p class="location">San Marino, USA</p>
+                <div class="rating" role="img" aria-label="Rated 4.0 out of 5">
+                    <div class="stars" data-rating="4.0" aria-hidden="true">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="rating-text" aria-hidden="true">4.0<small>/5</small></span>
                 </div>
-                <div class="rating">
-                    <div class="stars" data-rating="4.0">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <span class="rating-text">4.0/5</span>
-                </div>
-                <div class="order-section">
-                    <h3>What I Ordered:</h3>
-                    <p class="order-item">Mango Slush</p>
-                </div>
-                <div class="criteria">
-                    <div class="criterion">
-                        <span class="label">Study-ability:</span>
-                        <span class="value">Good</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Aesthetic:</span>
-                        <span class="value">Minimal</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Price:</span>
-                        <span class="value">$$</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Flavor:</span>
-                        <span class="value">Fruity & Sweet</span>
-                    </div>
-                </div>
+                <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
+                <p class="dish-label">the order</p>
+                <p class="dish">Mango Slush</p>
+                <dl class="notes">
+                    <div><dt>study-ability</dt><dd>Good</dd></div>
+                    <div><dt>aesthetic</dt><dd>Minimal</dd></div>
+                    <div><dt>price</dt><dd class="price" data-price="2">$$</dd></div>
+                    <div><dt>flavor</dt><dd>Fruity &amp; Sweet</dd></div>
+                </dl>
             </div>
-        </div>
+        </article>
 
-        <div class="coffee-card">
-            <img src="images/coffee/Carrera Cafe.jpg" alt="Carrera Cafe" width="600" height="800" loading="lazy" decoding="async">
-            <div class="card-content">
-                <div class="header-info">
-                    <h2>Carrera Cafe</h2>
-                    <p class="location">Los Angeles, USA</p>
+        <article class="coffee-card">
+            <img src="/images/coffee/Carrera Cafe.jpg" alt="Carrera Cafe" width="600" height="800" decoding="async" loading="lazy">
+            <div class="card-content cup">
+                <h2 class="name">Carrera Cafe</h2>
+                <p class="location">Los Angeles, USA</p>
+                <div class="rating" role="img" aria-label="Rated 4.0 out of 5">
+                    <div class="stars" data-rating="4.0" aria-hidden="true">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="rating-text" aria-hidden="true">4.0<small>/5</small></span>
                 </div>
-                <div class="rating">
-                    <div class="stars" data-rating="4.0">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <span class="rating-text">4.0/5</span>
-                </div>
-                <div class="order-section">
-                    <h3>What I Ordered:</h3>
-                    <p class="order-item">Iced Cappuccino with Cold Foam</p>
-                </div>
-                <div class="criteria">
-                    <div class="criterion">
-                        <span class="label">Study-ability:</span>
-                        <span class="value">Good</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Aesthetic:</span>
-                        <span class="value">Modern</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Price:</span>
-                        <span class="value">$$</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Flavor:</span>
-                        <span class="value">Light &amp; Refreshing</span>
-                    </div>
-                </div>
+                <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
+                <p class="dish-label">the order</p>
+                <p class="dish">Iced Cappuccino with Cold Foam</p>
+                <dl class="notes">
+                    <div><dt>study-ability</dt><dd>Good</dd></div>
+                    <div><dt>aesthetic</dt><dd>Modern</dd></div>
+                    <div><dt>price</dt><dd class="price" data-price="2">$$</dd></div>
+                    <div><dt>flavor</dt><dd>Light &amp; Refreshing</dd></div>
+                </dl>
             </div>
-        </div>
+        </article>
 
-        <div class="coffee-card">
-            <img src="images/coffee/Erewhon.jpg" alt="Erewhon" width="600" height="800" loading="lazy" decoding="async">
-            <div class="card-content">
-                <div class="header-info">
-                    <h2>Erewhon</h2>
-                    <p class="location">Los Angeles, USA</p>
+        <article class="coffee-card">
+            <img src="/images/coffee/Erewhon.jpg" alt="Erewhon" width="600" height="800" decoding="async" loading="lazy">
+            <div class="card-content cup">
+                <h2 class="name">Erewhon</h2>
+                <p class="location">Los Angeles, USA</p>
+                <div class="rating" role="img" aria-label="Rated 4.5 out of 5">
+                    <div class="stars" data-rating="4.5" aria-hidden="true">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="rating-text" aria-hidden="true">4.5<small>/5</small></span>
                 </div>
-                <div class="rating">
-                    <div class="stars" data-rating="4.5">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <span class="rating-text">4.5/5</span>
-                </div>
-                <div class="order-section">
-                    <h3>What I Ordered:</h3>
-                    <p class="order-item">Malibu Mango Smoothie</p>
-                </div>
-                <div class="criteria">
-                    <div class="criterion">
-                        <span class="label">Study-ability:</span>
-                        <span class="value">N/A</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Aesthetic:</span>
-                        <span class="value">Modern &amp; Minimal</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Price:</span>
-                        <span class="value">$$$</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Flavor:</span>
-                        <span class="value">Light &amp; Sweet</span>
-                    </div>
-                </div>
+                <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
+                <p class="dish-label">the order</p>
+                <p class="dish">Malibu Mango Smoothie</p>
+                <dl class="notes">
+                    <div><dt>study-ability</dt><dd>N/A</dd></div>
+                    <div><dt>aesthetic</dt><dd>Modern &amp; Minimal</dd></div>
+                    <div><dt>price</dt><dd class="price" data-price="3">$$$</dd></div>
+                    <div><dt>flavor</dt><dd>Light &amp; Sweet</dd></div>
+                </dl>
             </div>
-        </div>
+        </article>
 
-        <div class="coffee-card">
-            <img src="images/coffee/Philz.jpg" alt="Philz" width="600" height="800" loading="lazy" decoding="async">
-            <div class="card-content">
-                <div class="header-info">
-                    <h2>Philz</h2>
-                    <p class="location">San Francisco, USA</p>
+        <article class="coffee-card">
+            <img src="/images/coffee/Philz.jpg" alt="Philz" width="600" height="800" decoding="async" loading="lazy">
+            <div class="card-content cup">
+                <h2 class="name">Philz</h2>
+                <p class="location">San Francisco, USA</p>
+                <div class="rating" role="img" aria-label="Rated 5.0 out of 5">
+                    <div class="stars" data-rating="5.0" aria-hidden="true">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="rating-text" aria-hidden="true">5.0<small>/5</small></span>
                 </div>
-                <div class="rating">
-                    <div class="stars" data-rating="5.0">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <span class="rating-text">5.0/5</span>
-                </div>
-                <div class="order-section">
-                    <h3>What I Ordered:</h3>
-                    <p class="order-item">Tiramisu Cold Brew</p>
-                </div>
-                <div class="criteria">
-                    <div class="criterion">
-                        <span class="label">Study-ability:</span>
-                        <span class="value">Great</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Aesthetic:</span>
-                        <span class="value">Cozy &amp; Aesthetic</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Price:</span>
-                        <span class="value">$$</span>
-                    </div>
-                    <div class="criterion">
-                        <span class="label">Flavor:</span>
-                        <span class="value">Sweet &amp; Rich</span>
-                    </div>
-                </div>
+                <span class="flourish" aria-hidden="true"><span class="pip">&#9670;</span></span>
+                <p class="dish-label">the order</p>
+                <p class="dish">Tiramisu Cold Brew</p>
+                <dl class="notes">
+                    <div><dt>study-ability</dt><dd>Great</dd></div>
+                    <div><dt>aesthetic</dt><dd>Cozy &amp; Aesthetic</dd></div>
+                    <div><dt>price</dt><dd class="price" data-price="2">$$</dd></div>
+                    <div><dt>flavor</dt><dd>Sweet &amp; Rich</dd></div>
+                </dl>
             </div>
-        </div>
+        </article>
     </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Handle star ratings
-            const starContainers = document.querySelectorAll('.stars');
-
-            starContainers.forEach(container => {
-                const rating = parseFloat(container.dataset.rating);
-                const stars = container.querySelectorAll('.star');
-
-                stars.forEach((star, index) => {
-                    const starNumber = index + 1;
-
-                    if (rating >= starNumber) {
-                        // Full star
-                        star.classList.add('filled');
-                    } else if (rating > starNumber - 1) {
-                        // Partial star
-                        const fillPercentage = ((rating - (starNumber - 1)) * 100);
-                        star.classList.add('partial');
-                        star.style.setProperty('--fill-percentage', fillPercentage + '%');
-                    }
-                    // Empty stars remain with default styling
-                });
-            });
-
-            // Handle image loading
-            const images = document.querySelectorAll('.coffee-card img');
-            images.forEach(img => {
-                if (img.complete) {
-                    img.classList.add('loaded');
-                } else {
-                    img.addEventListener('load', function() {
-                        this.classList.add('loaded');
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
